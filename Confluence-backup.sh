@@ -1,18 +1,16 @@
 #!/bin/bash
 
-
 ###--- CONFIGURATION SECTION STARTS HERE ---###
 # MAKE SURE ALL THE VALUES IN THIS SECTION ARE CORRECT BEFORE RUNNIG THE SCRIPT
-EMAIL=alexander.bondarchuk@genestack.com
-
 source api-token.sh
+mkdir $result
+EMAIL=$email
 API_TOKEN=$token
-
-INSTANCE=genestack.atlassian.net
-DOWNLOAD_FOLDER="/Desktop/repos/Confluence-backup/1"
+INSTANCE=$instance
+DOWNLOAD_FOLDER=$result
 
 # Set to false if you don't want to backup attachments
-INCLUDE_ATTACHMENTS=true
+INCLUDE_ATTACHMENTS=false
 
 
 ### Checks for progress max 3000 times, waiting 20 seconds between one check and the other ###
@@ -79,6 +77,6 @@ else
 ## PRINT THE FILE TO DOWNLOAD ##
 echo "Downloading file: https://${INSTANCE}/wiki/download/$FILE_NAME"
 
-curl -s -L -u ${EMAIL}:${API_TOKEN} "https://${INSTANCE}/wiki/download/$FILE_NAME" -o "$DOWNLOAD_FOLDER/CONF-backup-${TODAY}.zip"
+curl -L -u ${EMAIL}:${API_TOKEN} "https://${INSTANCE}/wiki/download/$FILE_NAME" -o "$DOWNLOAD_FOLDER/CONF-backup-${TODAY}.zip"
 
 fi
