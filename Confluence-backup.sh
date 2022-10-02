@@ -3,11 +3,11 @@
 ###--- CONFIGURATION SECTION STARTS HERE ---###
 # MAKE SURE ALL THE VALUES IN THIS SECTION ARE CORRECT BEFORE RUNNIG THE SCRIPT
 source api-token.sh
-mkdir $result
+mkdir $folder
 EMAIL=$email
 API_TOKEN=$token
 INSTANCE=$instance
-DOWNLOAD_FOLDER=$result
+DOWNLOAD_FOLDER=$folder
 
 # Set to false if you don't want to backup attachments
 INCLUDE_ATTACHMENTS=false
